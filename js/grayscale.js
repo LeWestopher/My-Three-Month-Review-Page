@@ -13,9 +13,40 @@ $(window).scroll(function() {
     }
 });
 
-function progress(percent, $element) {
+$('body').on('click', '#endSkills', function(event) {
+    event.preventDefault();
+    progress(75, $('#html5'), progress(
+        56, $('#CSS3'), progress(
+            87, $('#JavaScript'), progress(
+                64, $('#CakePHP'), progress(
+                    54, $('#MySQL')
+                    )
+                )
+            )
+        )
+    )            
+});
+
+$('body').on('click', '#startSkills', function(event) {
+    event.preventDefault();
+    progress(30, $('#html5'), progress(
+        15, $('#CSS3'), progress(
+            13, $('#JavaScript'), progress(
+                28, $('#CakePHP'), progress(
+                    18, $('#MySQL')
+                    )
+                )
+            )
+        )
+    )            
+});
+
+function progress(percent, $element, callback) {
     var progressBarWidth = percent * $element.width() / 100;
     $element.find('div').animate({ width: progressBarWidth }, 500).html(percent + "%&nbsp;");
+    if(typeof callback != 'undefined') {
+        callback();
+    }
 }
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
